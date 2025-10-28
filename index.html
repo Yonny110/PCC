@@ -815,7 +815,7 @@ footer {
 
 /* base */
 *{box-sizing:border-box}
-html,body{height:100%;font-family: 'Poppins', system-ui, -apple-system,Segoe UI, Roboto, "Helvetica Neue", Arial; color:#0f1724;background:var(--bg);margin:0}
+html,body{height:100%;font-family: 'Poppins', system-ui, -apple-system,Segoe UI, Roboto, "Helvetica Neue", Arial; color:#0f1724;background:var(--bg);margin:0;overflow-x:hidden}
 .container{max-width:var(--container);margin:0 auto;padding:0 1rem}
 
 /* mobile nav toggle - simplified, no animation */
@@ -835,6 +835,8 @@ html,body{height:100%;font-family: 'Poppins', system-ui, -apple-system,Segoe UI,
   .site-nav.open{display:block}
   .nav-toggle{display:block}
   .hero-inner{padding:2.5rem 0}
+    /* Remove fixed background on small screens to avoid visual glitches and horizontal overflow */
+    .hero{background-attachment:scroll}
 }
 
 /* Overlay Styles */
