@@ -985,6 +985,58 @@ html,body{height:100%;font-family: 'Poppins', system-ui, -apple-system,Segoe UI,
     }
 }
 
+/* Responsive adjustments: tablet -> phone -> small phones */
+@media (max-width: 1024px) {
+    /* slightly reduce hero on tablets */
+    .hero h1 { font-size: 4rem; }
+}
+
+@media (max-width: 768px) {
+    .hero { min-height: 70vh; background-position: center; }
+    .hero h1 { font-size: 3.2rem; line-height: 1.05; margin-bottom: 1rem; }
+    .hero-inner { max-width: 90%; padding: 1.25rem; }
+
+    /* Stack multi-column layouts */
+    .about-content, .mission-vision, .features, .programs-container, .facilities-grid, .testimonial-slider {
+        grid-template-columns: 1fr !important;
+        display: grid;
+        gap: 1.25rem;
+    }
+
+    .contact-container { grid-template-columns: 1fr; }
+    .contact-form, .contact-info { width: 100%; }
+
+    .feature-card, .program-card, .facility-card { padding: 1.25rem; }
+    .facility-img { height: 150px; }
+
+    .testimonial-slider { grid-template-columns: 1fr; }
+
+    /* Make buttons easier to tap on small screens */
+    .btn { min-width: 140px; padding: 0.9rem 1.25rem; }
+
+    /* Prevent hero background issues on mobile (already set elsewhere) */
+    .hero { background-attachment: scroll; }
+}
+
+@media (max-width: 480px) {
+    .hero { min-height: 60vh; }
+    .hero h1 { font-size: 2.6rem; letter-spacing: 0.6px; }
+    .hero-ctas { gap: 0.75rem; }
+
+    /* Reduce padding and make lists easier to read */
+    .container { padding: 0 0.75rem; }
+    .values-list li { padding-left: 1rem; }
+
+    /* Smaller images for faster paint */
+    .facility-img, .testimonial-img { height: 120px; }
+
+    /* Contact form full width and larger inputs */
+    .contact-form input, .contact-form textarea { font-size: 1rem; padding: 0.7rem; }
+}
+
+/* Make images fluid everywhere */
+img { max-width: 100%; height: auto; display: block; }
+
 </style>
 </head>
 <body>
