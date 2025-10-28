@@ -114,45 +114,26 @@ body {
         padding: 0.5rem;
     }
 
+    /* Simple non-animating hamburger (three horizontal bars) */
     .hamburger {
         width: 24px;
-        height: 2px;
+        height: 3px;
         background: var(--primary);
         position: relative;
-        transition: all 0.3s ease;
     }
 
     .hamburger::before,
     .hamburger::after {
         content: '';
         position: absolute;
+        left: 0;
         width: 24px;
-        height: 2px;
+        height: 3px;
         background: var(--primary);
-        transition: all 0.3s ease;
     }
 
-    .hamburger::before {
-        top: -6px;
-    }
-
-    .hamburger::after {
-        bottom: -6px;
-    }
-
-    .nav-toggle[aria-expanded="true"] .hamburger {
-        transform: rotate(45deg);
-    }
-
-    .nav-toggle[aria-expanded="true"] .hamburger::before {
-        transform: rotate(90deg);
-        top: 0;
-    }
-
-    .nav-toggle[aria-expanded="true"] .hamburger::after {
-        transform: rotate(90deg);
-        bottom: 0;
-    }
+    .hamburger::before { top: -8px; }
+    .hamburger::after { top: 8px; }
 
     .site-nav {
         position: absolute;
@@ -837,15 +818,12 @@ footer {
 html,body{height:100%;font-family: 'Poppins', system-ui, -apple-system,Segoe UI, Roboto, "Helvetica Neue", Arial; color:#0f1724;background:var(--bg);margin:0}
 .container{max-width:var(--container);margin:0 auto;padding:0 1rem}
 
-/* mobile nav toggle */
+/* mobile nav toggle - simplified, no animation */
 .nav-toggle{background:none;border:0;padding:.5rem;border-radius:8px;cursor:pointer;display:none}
-.hamburger{display:block;width:22px;height:2px;background:#0f1724;position:relative}
-.hamburger::before,.hamburger::after{content:"";position:absolute;left:0;width:22px;height:2px;background:#0f1724;transition:transform .2s}
+.hamburger{display:block;width:22px;height:3px;background:#0f1724;position:relative}
+.hamburger::before,.hamburger::after{content:"";position:absolute;left:0;width:22px;height:3px;background:#0f1724}
 .hamburger::before{top:-7px}
 .hamburger::after{top:7px}
-.nav-toggle[aria-expanded="true"] .hamburger{background:transparent}
-.nav-toggle[aria-expanded="true"] .hamburger::before{transform:rotate(45deg) translate(4px,4px)}
-.nav-toggle[aria-expanded="true"] .hamburger::after{transform:rotate(-45deg) translate(4px,-4px)}
 
 /* responsive */
 @media (max-width:900px){
@@ -1409,6 +1387,20 @@ html,body{height:100%;font-family: 'Poppins', system-ui, -apple-system,Segoe UI,
         </div>
     </div>
 
-    <script src="js/script.js"></script>
+            <script>
+            // Simple mobile nav toggle: no animation, only open/close
+            (function(){
+                const navToggle = document.getElementById('navToggle');
+                const siteNav = document.getElementById('siteNav');
+                if (navToggle && siteNav) {
+                    navToggle.addEventListener('click', function(){
+                        const expanded = this.getAttribute('aria-expanded') === 'true';
+                        this.setAttribute('aria-expanded', String(!expanded));
+                        siteNav.classList.toggle('open');
+                    });
+                }
+            })();
+            </script>
+            <script src="js/script.js"></script>
 </body>
 </html>
