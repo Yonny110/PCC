@@ -34,6 +34,7 @@ function proceedApplication() {
 }
 
 
+
     // Error handling for images
     document.querySelectorAll('img').forEach(img => {
         img.addEventListener('error', function() {
@@ -45,6 +46,13 @@ function proceedApplication() {
             this.parentNode.insertBefore(fallback, this);
         });
     });
+
+    // Hamburger menu variables
+    const toggle = document.getElementById('navToggle');
+    const nav = document.getElementById('siteNav');
+    const header = document.getElementById('site-header');
+    const backToTopButton = document.querySelector('.back-to-top');
+    const messageForm = document.getElementById('messageForm');
 
     // Navigation toggle functionality - optimized for instant response
     if (toggle && nav) {
@@ -501,4 +509,3 @@ function proceedApplication() {
             }
         };
     }
-});
