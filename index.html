@@ -21,6 +21,14 @@
     --container: 1200px;
     --divider: #f2f2f2;
     --shadow: 0 8px 32px rgba(0,0,0,0.08);
+    --overlay-bg: rgba(0,0,0,0.5);
+    --overlay-content-bg: #fff;
+    --overlay-radius: 8px;
+    --overlay-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    --overlay-accent: #910000;
+    --overlay-img-shadow: 0 1px 4px #e0e0e0;
+    --overlay-list-dot: #910000;
+    --overlay-highlight: #f7f7f7;
 }
 
 /* Reset and Base Styles */
@@ -433,6 +441,68 @@ section:not(:last-child)::after {
     align-items: center;
     justify-content: center;
     color: #999;
+    cursor: pointer;
+}
+
+/* Enhance clickable facility card */
+#libraryFacilityCard, #crownJewelFacilityCard, #computerLabFacilityCard, #gymFacilityCard, #chapelFacilityCard, #aulaMinorFacilityCard {
+    cursor: pointer;
+    transition: background 0.2s;
+}
+#libraryFacilityCard:hover, #crownJewelFacilityCard:hover, #computerLabFacilityCard:hover, #gymFacilityCard:hover, #chapelFacilityCard:hover, #aulaMinorFacilityCard:hover {
+    background: var(--overlay-highlight);
+}
+
+/* Library Overlay Styles */
+#libraryOverlay.overlay, #crownJewelOverlay.overlay, #computerLabOverlay.overlay, #gymOverlay.overlay, #chapelOverlay.overlay, #aulaMinorOverlay.overlay {
+    background: var(--overlay-bg);
+    z-index: 3000;
+}
+
+#libraryOverlay .overlay-content, #crownJewelOverlay .overlay-content, #computerLabOverlay .overlay-content, #gymOverlay .overlay-content, #chapelOverlay .overlay-content, #aulaMinorOverlay .overlay-content {
+    background: var(--overlay-content-bg);
+    border-radius: var(--overlay-radius);
+    box-shadow: var(--overlay-shadow);
+    max-width: 500px;
+    padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+    text-align: center;
+    position: relative;
+    width: 90%;
+    margin: 1rem;
+}
+
+#libraryOverlay .library-img, #crownJewelOverlay .library-img, #computerLabOverlay .library-img, #gymOverlay .library-img, #chapelOverlay .library-img, #aulaMinorOverlay .library-img {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+#libraryOverlay .library-img img, #crownJewelOverlay .library-img img, #computerLabOverlay .library-img img, #gymOverlay .library-img img, #chapelOverlay .library-img img, #aulaMinorOverlay .library-img img {
+    max-width: 100%;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: var(--overlay-img-shadow);
+    border: 1px solid #eee;
+}
+
+#libraryOverlay .library-details-list, #crownJewelOverlay .library-details-list, #computerLabOverlay .library-details-list, #gymOverlay .library-details-list, #chapelOverlay .library-details-list, #aulaMinorOverlay .library-details-list {
+    margin: 1rem 0 1.2rem 0;
+    padding-left: 1.1rem;
+    text-align: left;
+    list-style: disc inside;
+    color: #444;
+    font-size: 1rem;
+}
+#libraryOverlay .library-details-list li, #crownJewelOverlay .library-details-list li, #computerLabOverlay .library-details-list li, #gymOverlay .library-details-list li, #chapelOverlay .library-details-list li, #aulaMinorOverlay .library-details-list li {
+    margin-bottom: 0.5rem;
+    padding-left: 0;
+    position: static;
+}
+
+#libraryOverlay .library-highlight, #crownJewelOverlay .library-highlight, #computerLabOverlay .library-highlight, #gymOverlay .library-highlight, #chapelOverlay .library-highlight, #aulaMinorOverlay .library-highlight {
+    color: #910000;
+    font-weight: 600;
+    margin-top: 1rem;
+    font-size: 1rem;
 }
 
 .facility-img img {
@@ -763,6 +833,7 @@ footer {
     opacity: 1;
     align-items: center;
     justify-content: center;
+    padding: 1rem;
 }
 
 .overlay-content {
@@ -775,6 +846,8 @@ footer {
     transform: translateY(-20px);
     transition: transform 0.3s ease;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .overlay.active .overlay-content {
@@ -792,6 +865,7 @@ footer {
     cursor: pointer;
     padding: 0.5rem;
     line-height: 1;
+    z-index: 10;
 }
 
 .overlay-logo {
@@ -912,6 +986,43 @@ footer {
         min-width: 140px; 
         padding: 0.9rem 1.25rem; 
     }
+
+    /* Responsive Overlay Styles */
+    .overlay.active {
+        padding: 0.5rem;
+        align-items: flex-start;
+    }
+
+    .overlay-content {
+        padding: 1.5rem;
+        max-height: 85vh;
+        margin-top: 2rem;
+    }
+
+    .close-overlay {
+        right: 0.75rem;
+        top: 0.75rem;
+        font-size: 1.75rem;
+    }
+
+    #libraryOverlay .library-details-list, 
+    #crownJewelOverlay .library-details-list, 
+    #computerLabOverlay .library-details-list, 
+    #gymOverlay .library-details-list, 
+    #chapelOverlay .library-details-list, 
+    #aulaMinorOverlay .library-details-list {
+        font-size: 0.9rem;
+        padding-left: 0.5rem;
+    }
+
+    .overlay-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .overlay-content p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
 }
 
 @media (max-width: 480px) {
@@ -940,6 +1051,47 @@ footer {
     .contact-form input, .contact-form textarea { 
         font-size: 1rem; 
         padding: 0.7rem; 
+    }
+
+    /* Extra Small Screen Overlay Styles */
+    .overlay-content {
+        padding: 1rem;
+        border-radius: 10px;
+    }
+
+    .close-overlay {
+        right: 0.5rem;
+        top: 0.5rem;
+        font-size: 1.5rem;
+    }
+
+    #libraryOverlay .library-details-list, 
+    #crownJewelOverlay .library-details-list, 
+    #computerLabOverlay .library-details-list, 
+    #gymOverlay .library-details-list, 
+    #chapelOverlay .library-details-list, 
+    #aulaMinorOverlay .library-details-list {
+        font-size: 0.85rem;
+        margin: 0.5rem 0;
+    }
+
+    .overlay-content h2 {
+        font-size: 1.3rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .overlay-content p {
+        font-size: 0.85rem;
+        margin-bottom: 0.75rem;
+    }
+
+    #libraryOverlay .library-highlight, 
+    #crownJewelOverlay .library-highlight, 
+    #computerLabOverlay .library-highlight, 
+    #gymOverlay .library-highlight, 
+    #chapelOverlay .library-highlight, 
+    #aulaMinorOverlay .library-highlight {
+        font-size: 0.9rem;
     }
 }
 
@@ -1080,7 +1232,7 @@ img {
                     <h2>Our Facilities</h2>
                 </div>
                 <div class="facilities-grid">
-                    <div class="facility-card">
+                    <div class="facility-card" id="libraryFacilityCard">
                         <div class="facility-img">
                             <img src="images/library.jpg" alt="Library">
                         </div>
@@ -1089,7 +1241,7 @@ img {
                             <p>Well-stocked with books, journals, and digital resources to support learning and research.</p>
                         </div>
                     </div>
-                    <div class="facility-card">
+                    <div class="facility-card" id="crownJewelFacilityCard">
                         <div class="facility-img">
                             <img src="images/crown-jewel.jpg" alt="Crown Jewel">
                         </div>
@@ -1098,7 +1250,7 @@ img {
                             <p>Multipurpose area used for community gatherings that highlight the school's Catholic identity and promote spiritual and social engagement.</p>
                         </div>
                     </div>
-                    <div class="facility-card">
+                    <div class="facility-card" id="computerLabFacilityCard">
                         <div class="facility-img">
                             <img src="images/computer-lab.jpg" alt="">
                         </div>
@@ -1107,7 +1259,7 @@ img {
                             <p>For hands-on IT education, programming, digital projectsm and collaboratives learning.</p>
                         </div>
                     </div>
-                    <div class="facility-card">
+                    <div class="facility-card" id="gymFacilityCard">
                         <div class="facility-img">
                             <img src="images/gym.jpg" alt="St. Joseph Gymnasium">
                         </div>
@@ -1116,7 +1268,7 @@ img {
                             <p>Spacious gymnasium, basketball court, and outdoor sports facilities for physical development.</p>
                         </div>
                     </div>
-                    <div class="facility-card">
+                    <div class="facility-card" id="chapelFacilityCard">
                         <div class="facility-img">
                             <img src="images/chapel.jpg" alt="Campus Chapel">
                         </div>
@@ -1125,7 +1277,7 @@ img {
                             <p>Sacred space for worship, prayer, and spiritual reflection for the PCC community.</p>
                         </div>
                     </div>
-                    <div class="facility-card">
+                    <div class="facility-card" id="aulaMinorFacilityCard">
                         <div class="facility-img">
                             <img src="images/Aula.jpg" alt="Aula Minor">
                         </div>
@@ -1306,9 +1458,9 @@ img {
                     <h3>Pasig Catholic College</h3>
                     <p>Providing quality Catholic education since 1913. Nurturing minds, shaping character, and building futures.</p>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/pasigcatholiccollegeph" title="Facebook">f</a>
-                        <a href="https://x.com/i/flow/login?redirect_after_login=%2FPCC1913Official" title="Twitter">t</a>
-                        <a href="https://www.youtube.com/channel/UCuV30fNIIh97soyu73FJuOw" title="YouTube">y</a>
+                        <a href="https://www.facebook.com/pasigcatholiccollegeph" title="Facebook"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png" alt="Facebook" style="border-radius: 100%;"></a>
+                        <a href="https://x.com/i/flow/login?redirect_after_login=%2FPCC1913Official" title="Twitter"><img src="https://images.seeklogo.com/logo-png/49/1/twitter-x-logo-png_seeklogo-492396.png" alt="Twitter" style="border-radius: 100%;"></a>
+                        <a href="https://www.youtube.com/channel/UCuV30fNIIh97soyu73FJuOw" title="YouTube"><img src="https://pngdownload.io/wp-content/uploads/2023/12/YouTube-Logo-PNG-Symbol-for-Video-Platform-Transparent-jpg.webp" alt="Youtube" style="border-radius: 100%;"></a>
                     </div>
                 </div>
                 <div class="footer-column">
@@ -1353,6 +1505,126 @@ img {
     <!-- Back to Top Button -->
     <button class="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
 
+    <!-- Library Details Overlay -->
+    <div id="libraryOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Library details overlay">
+        <div class="overlay-content">
+            <button class="close-overlay" onclick="closeLibraryOverlay()" aria-label="Close library details">&times;</button>
+            <h2 style="color: var(--primary);">Library</h2>
+            <div class="library-img">
+                <img src="images/library.jpg" alt="Library">
+            </div>
+            <p>Our library is well-stocked with a wide range of books, journals, and digital resources to support learning and research for all students and faculty. It offers a quiet and comfortable environment for study, group work, and academic exploration.</p>
+            <ul class="library-details-list">
+                <li>Extensive collection of academic books and references</li>
+                <li>Access to online journals and e-books</li>
+                <li>Study areas and discussion rooms</li>
+                <li>Computer terminals for research</li>
+                <li>Friendly and helpful library staff</li>
+            </ul>
+            <div class="library-highlight">Visit the library to discover more resources!</div>
+        </div>
+    </div>
+
+    <!-- Crown Jewel Details Overlay -->
+    <div id="crownJewelOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Crown Jewel details overlay">
+        <div class="overlay-content">
+            <button class="close-overlay" onclick="closeCrownJewelOverlay()" aria-label="Close Crown Jewel details">&times;</button>
+            <h2 style="color: var(--primary);">Crown Jewel</h2>
+            <div class="library-img">
+                <img src="images/crown-jewel.jpg" alt="Crown Jewel">
+            </div>
+            <p>The Crown Jewel is a multipurpose area at Pasig Catholic College, designed for community gatherings, school events, and special occasions. It highlights the school's Catholic identity and serves as a venue for spiritual, cultural, and social engagement.</p>
+            <ul class="library-details-list">
+                <li>Spacious hall for assemblies and celebrations</li>
+                <li>Equipped with modern audio-visual facilities</li>
+                <li>Hosts religious, academic, and social events</li>
+                <li>Comfortable seating and flexible arrangements</li>
+                <li>Accessible to students, faculty, and guests</li>
+            </ul>
+            <div class="library-highlight">Experience the heart of PCC's community life at the Crown Jewel!</div>
+        </div>
+    </div>
+
+    <!-- Computer Laboratories Overlay -->
+    <div id="computerLabOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Computer Laboratories details overlay">
+        <div class="overlay-content">
+            <button class="close-overlay" onclick="closeComputerLabOverlay()" aria-label="Close Computer Laboratories details">&times;</button>
+            <h2 style="color: var(--primary);">Computer Laboratories</h2>
+            <div class="library-img">
+                <img src="images/computer-lab.jpg" alt="Computer Laboratories">
+            </div>
+            <p>Our state-of-the-art computer laboratories provide students with hands-on IT education, programming experience, and digital project development. Equipped with modern hardware and software to support collaborative learning and technological innovation.</p>
+            <ul class="library-details-list">
+                <li>Modern computer systems with latest software</li>
+                <li>High-speed internet connectivity</li>
+                <li>Programming and development environments</li>
+                <li>Collaborative workstations for group projects</li>
+                <li>Supervised by experienced IT instructors</li>
+            </ul>
+            <div class="library-highlight">Develop your digital skills in our advanced computer labs!</div>
+        </div>
+    </div>
+
+    <!-- St. Joseph Gymnasium Overlay -->
+    <div id="gymOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="St. Joseph Gymnasium details overlay">
+        <div class="overlay-content">
+            <button class="close-overlay" onclick="closeGymOverlay()" aria-label="Close St. Joseph Gymnasium details">&times;</button>
+            <h2 style="color: var(--primary);">St. Joseph Gymnasium</h2>
+            <div class="library-img">
+                <img src="images/gym.jpg" alt="St. Joseph Gymnasium">
+            </div>
+            <p>The St. Joseph Gymnasium is a versatile sports facility that hosts various athletic events, school gatherings, and physical education activities. With its spacious design and modern amenities, it serves as a hub for physical development and community events.</p>
+            <ul class="library-details-list">
+                <li>Full-size basketball court with professional flooring</li>
+                <li>Volleyball and badminton court markings</li>
+                <li>Bleacher seating for spectators</li>
+                <li>Sound system for events and announcements</li>
+                <li>Equipment storage and locker rooms</li>
+            </ul>
+            <div class="library-highlight">Stay active and healthy in our well-equipped gymnasium!</div>
+        </div>
+    </div>
+
+    <!-- Campus Chapel Overlay -->
+    <div id="chapelOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Campus Chapel details overlay">
+        <div class="overlay-content">
+            <button class="close-overlay" onclick="closeChapelOverlay()" aria-label="Close Campus Chapel details">&times;</button>
+            <h2 style="color: var(--primary);">Campus Chapel</h2>
+            <div class="library-img">
+                <img src="images/chapel.jpg" alt="Campus Chapel">
+            </div>
+            <p>The Campus Chapel provides a sacred space for worship, prayer, and spiritual reflection for the PCC community. It serves as the heart of our Catholic identity, offering daily Mass, prayer services, and moments of quiet contemplation.</p>
+            <ul class="library-details-list">
+                <li>Daily Mass and liturgical celebrations</li>
+                <li>Quiet space for personal prayer and reflection</li>
+                <li>Religious icons and artwork</li>
+                <li>Confessionals and spiritual guidance</li>
+                <li>Seasonal decorations and liturgical elements</li>
+            </ul>
+            <div class="library-highlight">Nourish your spiritual life in our peaceful chapel!</div>
+        </div>
+    </div>
+
+    <!-- Aula Minor Overlay -->
+    <div id="aulaMinorOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Aula Minor details overlay">
+        <div class="overlay-content">
+            <button class="close-overlay" onclick="closeAulaMinorOverlay()" aria-label="Close Aula Minor details">&times;</button>
+            <h2 style="color: var(--primary);">Aula Minor</h2>
+            <div class="library-img">
+                <img src="images/Aula.jpg" alt="Aula Minor">
+            </div>
+            <p>The Aula Minor is a versatile event space designed for school performances, presentations, seminars, and large gatherings. With its professional stage setup and comfortable seating, it provides an ideal venue for academic and cultural events.</p>
+            <ul class="library-details-list">
+                <li>Professional stage with lighting system</li>
+                <li>Audio-visual equipment for presentations</li>
+                <li>Comfortable seating for large audiences</li>
+                <li>Backstage area for performers</li>
+                <li>Flexible arrangement for various events</li>
+            </ul>
+            <div class="library-highlight">Experience memorable events in our Aula Minor!</div>
+        </div>
+    </div>
+
     <!-- Application Overlay -->
     <div id="applicationOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Application form overlay">
         <div class="overlay-content">
@@ -1373,6 +1645,212 @@ img {
         </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <script>
+    // Mobile Navigation Toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        const navToggle = document.getElementById('navToggle');
+        const siteNav = document.getElementById('siteNav');
+        
+        if (navToggle && siteNav) {
+            navToggle.addEventListener('click', function() {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+                siteNav.classList.toggle('active');
+            });
+        }
+        
+        // Back to Top Button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Form submission
+        const messageForm = document.getElementById('messageForm');
+        if (messageForm) {
+            messageForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            });
+        }
+    });
+
+    // Application Overlay Functions
+    function openOverlay() {
+        document.getElementById('applicationOverlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeOverlay() {
+        document.getElementById('applicationOverlay').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function proceedApplication() {
+        const studentType = document.getElementById('studentType').value;
+        if (!studentType) {
+            alert('Please select a student type');
+            return;
+        }
+        alert(`Proceeding with ${studentType === 'new' ? 'New Student' : 'Old/Continuing Student'} application`);
+        closeOverlay();
+    }
+
+    // Crown Jewel overlay logic
+    const crownJewelCard = document.getElementById('crownJewelFacilityCard');
+    const crownJewelOverlay = document.getElementById('crownJewelOverlay');
+    
+    function openCrownJewelOverlay() {
+        crownJewelOverlay.classList.add('active');
+        crownJewelOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeCrownJewelOverlay() {
+        crownJewelOverlay.classList.remove('active');
+        crownJewelOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+    
+    if (crownJewelCard) {
+        crownJewelCard.addEventListener('click', openCrownJewelOverlay);
+    }
+
+    // Library overlay logic
+    const libraryCard = document.getElementById('libraryFacilityCard');
+    const libraryOverlay = document.getElementById('libraryOverlay');
+    
+    function openLibraryOverlay() {
+        libraryOverlay.classList.add('active');
+        libraryOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeLibraryOverlay() {
+        libraryOverlay.classList.remove('active');
+        libraryOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+    
+    if (libraryCard) {
+        libraryCard.addEventListener('click', openLibraryOverlay);
+    }
+
+    // Computer Lab overlay logic
+    const computerLabCard = document.getElementById('computerLabFacilityCard');
+    const computerLabOverlay = document.getElementById('computerLabOverlay');
+    
+    function openComputerLabOverlay() {
+        computerLabOverlay.classList.add('active');
+        computerLabOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeComputerLabOverlay() {
+        computerLabOverlay.classList.remove('active');
+        computerLabOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+    
+    if (computerLabCard) {
+        computerLabCard.addEventListener('click', openComputerLabOverlay);
+    }
+
+    // Gym overlay logic
+    const gymCard = document.getElementById('gymFacilityCard');
+    const gymOverlay = document.getElementById('gymOverlay');
+    
+    function openGymOverlay() {
+        gymOverlay.classList.add('active');
+        gymOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeGymOverlay() {
+        gymOverlay.classList.remove('active');
+        gymOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+    
+    if (gymCard) {
+        gymCard.addEventListener('click', openGymOverlay);
+    }
+
+    // Chapel overlay logic
+    const chapelCard = document.getElementById('chapelFacilityCard');
+    const chapelOverlay = document.getElementById('chapelOverlay');
+    
+    function openChapelOverlay() {
+        chapelOverlay.classList.add('active');
+        chapelOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeChapelOverlay() {
+        chapelOverlay.classList.remove('active');
+        chapelOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+    
+    if (chapelCard) {
+        chapelCard.addEventListener('click', openChapelOverlay);
+    }
+
+    // Aula Minor overlay logic
+    const aulaMinorCard = document.getElementById('aulaMinorFacilityCard');
+    const aulaMinorOverlay = document.getElementById('aulaMinorOverlay');
+    
+    function openAulaMinorOverlay() {
+        aulaMinorOverlay.classList.add('active');
+        aulaMinorOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeAulaMinorOverlay() {
+        aulaMinorOverlay.classList.remove('active');
+        aulaMinorOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+    
+    if (aulaMinorCard) {
+        aulaMinorCard.addEventListener('click', openAulaMinorOverlay);
+    }
+    
+    // Close overlay on ESC key for all overlays
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            if (libraryOverlay.classList.contains('active')) closeLibraryOverlay();
+            if (crownJewelOverlay.classList.contains('active')) closeCrownJewelOverlay();
+            if (computerLabOverlay.classList.contains('active')) closeComputerLabOverlay();
+            if (gymOverlay.classList.contains('active')) closeGymOverlay();
+            if (chapelOverlay.classList.contains('active')) closeChapelOverlay();
+            if (aulaMinorOverlay.classList.contains('active')) closeAulaMinorOverlay();
+            if (document.getElementById('applicationOverlay').classList.contains('active')) closeOverlay();
+        }
+    });
+
+    // Close overlay when clicking on the background
+    document.querySelectorAll('.overlay').forEach(overlay => {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+    </script>
 </body>
 </html>
