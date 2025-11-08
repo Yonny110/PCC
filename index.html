@@ -414,116 +414,6 @@ section:not(:last-child)::after {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Facilities Section */
-.facilities-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.facility-card {
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s;
-}
-
-.facility-card:hover {
-    transform: translateY(-5px);
-}
-
-.facility-img {
-    height: 200px;
-    overflow: hidden;
-    background: #f0f0f0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #999;
-    cursor: pointer;
-}
-
-/* Enhance clickable facility card */
-#libraryFacilityCard, #crownJewelFacilityCard, #computerLabFacilityCard, #gymFacilityCard, #chapelFacilityCard, #aulaMinorFacilityCard {
-    cursor: pointer;
-    transition: background 0.2s;
-}
-#libraryFacilityCard:hover, #crownJewelFacilityCard:hover, #computerLabFacilityCard:hover, #gymFacilityCard:hover, #chapelFacilityCard:hover, #aulaMinorFacilityCard:hover {
-    background: var(--overlay-highlight);
-}
-
-/* Library Overlay Styles */
-#libraryOverlay.overlay, #crownJewelOverlay.overlay, #computerLabOverlay.overlay, #gymOverlay.overlay, #chapelOverlay.overlay, #aulaMinorOverlay.overlay {
-    background: var(--overlay-bg);
-    z-index: 3000;
-}
-
-#libraryOverlay .overlay-content, #crownJewelOverlay .overlay-content, #computerLabOverlay .overlay-content, #gymOverlay .overlay-content, #chapelOverlay .overlay-content, #aulaMinorOverlay .overlay-content {
-    background: var(--overlay-content-bg);
-    border-radius: var(--overlay-radius);
-    box-shadow: var(--overlay-shadow);
-    max-width: 500px;
-    padding: 1.5rem 1.2rem 1.2rem 1.2rem;
-    text-align: center;
-    position: relative;
-    width: 90%;
-    margin: 1rem;
-}
-
-#libraryOverlay .library-img, #crownJewelOverlay .library-img, #computerLabOverlay .library-img, #gymOverlay .library-img, #chapelOverlay .library-img, #aulaMinorOverlay .library-img {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
-}
-#libraryOverlay .library-img img, #crownJewelOverlay .library-img img, #computerLabOverlay .library-img img, #gymOverlay .library-img img, #chapelOverlay .library-img img, #aulaMinorOverlay .library-img img {
-    max-width: 100%;
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: var(--overlay-img-shadow);
-    border: 1px solid #eee;
-}
-
-#libraryOverlay .library-details-list, #crownJewelOverlay .library-details-list, #computerLabOverlay .library-details-list, #gymOverlay .library-details-list, #chapelOverlay .library-details-list, #aulaMinorOverlay .library-details-list {
-    margin: 1rem 0 1.2rem 0;
-    padding-left: 1.1rem;
-    text-align: left;
-    list-style: disc inside;
-    color: #444;
-    font-size: 1rem;
-}
-#libraryOverlay .library-details-list li, #crownJewelOverlay .library-details-list li, #computerLabOverlay .library-details-list li, #gymOverlay .library-details-list li, #chapelOverlay .library-details-list li, #aulaMinorOverlay .library-details-list li {
-    margin-bottom: 0.5rem;
-    padding-left: 0;
-    position: static;
-}
-
-#libraryOverlay .library-highlight, #crownJewelOverlay .library-highlight, #computerLabOverlay .library-highlight, #gymOverlay .library-highlight, #chapelOverlay .library-highlight, #aulaMinorOverlay .library-highlight {
-    color: #910000;
-    font-weight: 600;
-    margin-top: 1rem;
-    font-size: 1rem;
-}
-
-.facility-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s;
-}
-
-.facility-card:hover .facility-img img {
-    transform: scale(1.1);
-}
-
-.facility-info {
-    padding: 1.5rem;
-}
-
-.facility-info h3 {
-    margin-bottom: 0.5rem;
-    color: var(--primary);
-}
 
 /* Programs Section */
 .programs-container {
@@ -539,6 +429,7 @@ section:not(:last-child)::after {
     box-shadow: var(--shadow);
     transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s cubic-bezier(.4,2,.6,1);
     text-align: center;
+    cursor: pointer;
 }
 
 .program-card:hover {
@@ -894,6 +785,41 @@ footer {
     font-family: inherit;
 }
 
+/* Program Overlay Styles */
+.program-overlay-content {
+    text-align: center;
+}
+
+.program-overlay-icon {
+    font-size: 4rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.program-details-list {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+    text-align: left;
+    list-style: disc inside;
+    color: #444;
+    font-size: 1rem;
+}
+
+.program-details-list li {
+    margin-bottom: 0.5rem;
+}
+
+.program-highlight {
+    color: var(--primary);
+    font-weight: 600;
+    margin-top: 1rem;
+    font-size: 1rem;
+    text-align: center;
+    padding: 0.5rem;
+    background: var(--accent);
+    border-radius: 8px;
+}
+
 /* Button Styles */
 .btn {
     display: inline-flex;
@@ -1005,12 +931,7 @@ footer {
         font-size: 1.75rem;
     }
 
-    #libraryOverlay .library-details-list, 
-    #crownJewelOverlay .library-details-list, 
-    #computerLabOverlay .library-details-list, 
-    #gymOverlay .library-details-list, 
-    #chapelOverlay .library-details-list, 
-    #aulaMinorOverlay .library-details-list {
+    .program-details-list {
         font-size: 0.9rem;
         padding-left: 0.5rem;
     }
@@ -1065,12 +986,7 @@ footer {
         font-size: 1.5rem;
     }
 
-    #libraryOverlay .library-details-list, 
-    #crownJewelOverlay .library-details-list, 
-    #computerLabOverlay .library-details-list, 
-    #gymOverlay .library-details-list, 
-    #chapelOverlay .library-details-list, 
-    #aulaMinorOverlay .library-details-list {
+    .program-details-list {
         font-size: 0.85rem;
         margin: 0.5rem 0;
     }
@@ -1085,12 +1001,7 @@ footer {
         margin-bottom: 0.75rem;
     }
 
-    #libraryOverlay .library-highlight, 
-    #crownJewelOverlay .library-highlight, 
-    #computerLabOverlay .library-highlight, 
-    #gymOverlay .library-highlight, 
-    #chapelOverlay .library-highlight, 
-    #aulaMinorOverlay .library-highlight {
+    .program-highlight {
         font-size: 0.9rem;
     }
 }
@@ -1118,7 +1029,7 @@ img {
     <!-- Header -->
     <header class="site-header" id="site-header">
         <div class="container header-inner">
-            <a class="brand" href="#">
+            <a class="brand" href="index.html">
                 <img src="images/pcc-logo.png" alt="Pasig Catholic College" height="44">
             </a>
 
@@ -1128,10 +1039,10 @@ img {
 
             <nav class="site-nav" id="siteNav" aria-label="Main navigation">
                 <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#programs">Programs</a></li>
-                    <li><a href="#facilities">Facilities</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="Feature.html">Features</a></li>
+                    <li><a href="facilities.html">Facilities</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -1149,147 +1060,86 @@ img {
         </div>
     </section>
 
+    <!-- Features Section -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose PCC?</h2>
+            </div>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Quality Education</h3>
+                    <p>Academic excellence rooted in Catholic values and tradition.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⛪</div>
+                    <h3>Faith Formation</h3>
+                    <p>Nurturing spiritual growth and moral development.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏫</div>
+                    <h3>Modern Facilities</h3>
+                    <p>State-of-the-art learning environments and resources.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Community Engagement</h3>
+                    <p>Developing socially responsible and compassionate individuals.</p>
+                </div>
+            </div>
+        </div>
+    </section> 
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Students</h2>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <div class="testimonial-img" style="filter: blur(1px); position: relative;">
+                        <img src="images/student1.jpg" alt="Locked Character" style="filter: blur(1px);">
+                        <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #910000; font-size: 1rem; font-weight: bold; background: rgba(255,255,255,0.8); padding: 0.5rem 1.2rem; border-radius: 10px;">LOCKED</span>
+                    </div>
+                    <div class="testimonial-text" style="color: #999; font-style: italic;">
+                        Unlock this student!<br>
+                        <span style="font-size: 1.1rem;">-Wanted-</span>
+                    </div>
+                    <div class="testimonial-author">- Gita, Janluis A.</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-img">
+                        <img src="images/student2.jpg" alt="Hallig, Rino L.">
+                    </div>
+                    <div class="testimonial-text">
+                        Address: 23 A Caruncho Ave., <br>
+                        Malinao, Pasig City <br>
+                        <br>
+                        Contact No.: 0968-213-7314 <br>
+                        Email Address: Rinohallig@gmail.com <br>
+                    </div>
+                    <div class="testimonial-author">- Hallig, Rino L.</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-img">
+                        <img src="images/student3.jpg" alt="Delacruz, Toby B.">
+                    </div>
+                    <div class="testimonial-text">
+                        Address: 39 G. Valderama St., <br>
+                        Bambang, Pasig City <br>
+                        <br>
+                        Contact No.: 0976-328-1100 <br>
+                        Email Address: Tobydelacruz2005@gmail.com
+                    </div>
+                    <div class="testimonial-author">- Delacruz, Toby B.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <main id="main">
-        <!-- Features Section -->
-        <section>
-            <div class="container">
-                <div class="section-title">
-                    <h2>Why Choose PCC?</h2>
-                </div>
-                <div class="features">
-                    <div class="feature-card">
-                        <div class="feature-icon">🎓</div>
-                        <h3>Quality Education</h3>
-                        <p>Academic excellence rooted in Catholic values and tradition.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">⛪</div>
-                        <h3>Faith Formation</h3>
-                        <p>Nurturing spiritual growth and moral development.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🏫</div>
-                        <h3>Modern Facilities</h3>
-                        <p>State-of-the-art learning environments and resources.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🤝</div>
-                        <h3>Community Engagement</h3>
-                        <p>Developing socially responsible and compassionate individuals.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about">
-            <div class="container">
-                <div class="section-title">
-                    <h2>About Pasig Catholic College</h2>
-                </div>
-                <div class="about-content">
-                    <div class="mission-vision">
-                        <div class="mission-card">
-                            <h3>Our Mission</h3>
-                            <p>As we advance towards this vision, we seek to live out and maintain the following principles:</p>
-                            <ol class="values-list" style="list-style: decimal; padding-left: 1.5rem; text-align: left;">
-                                <li>We are role models in the practice of our Christian faith</li>
-                                <li>We discern and develop what is distinctly Catholic in our educational system</li>
-                                <li>We promote the value of excellence at all levels of the institution's operation</li>
-                                <li>As a community, we adhere to social transformation through immersion and advocacy, community outreach and parish involvement</li>
-                                <li>We empower our workforce by professionalizing all operations and setting up of more effective systems of coordination, communication and networking among units of the institution</li>
-                            </ol>
-                        </div>
-                        <div class="vision-card">
-                            <h3>Our Vision</h3>
-                            <p>PASIG CATHOLIC COLLEGE, as part of the Immaculate Conception Parish, envisions itself as an evangelized and evangelizing community whose commitment to quality Catholic education promotes a culture of excellence and the task of social transformation.</p>
-                        </div>
-                        <div class="values-card">
-                            <h3>Core Values</h3>
-                            <ul class="values-list">
-                                <li>Christian Discipleship</li>
-                                <li>Respect for Human Dignity</li>
-                                <li>Preferential Option for the Poor</li>
-                                <li>Excellence</li>
-                                <li>Responsible Stewardship</li>
-                            </ul>
-                            <a href="core.html" style="margin-top: 1rem; text-decoration: none;">Learn More About Our Values</a>
-                        </div>
-                    </div>
-                    <div class="about-image">
-                        <div class="facility-img" style="height: 1220px;">
-                            <img src="images/campus.jpg" alt="Campus">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Facilities Section -->
-        <section id="facilities">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Our Facilities</h2>
-                </div>
-                <div class="facilities-grid">
-                    <div class="facility-card" id="libraryFacilityCard">
-                        <div class="facility-img">
-                            <img src="images/library.jpg" alt="Library">
-                        </div>
-                        <div class="facility-info">
-                            <h3>Library</h3>
-                            <p>Well-stocked with books, journals, and digital resources to support learning and research.</p>
-                        </div>
-                    </div>
-                    <div class="facility-card" id="crownJewelFacilityCard">
-                        <div class="facility-img">
-                            <img src="images/crown-jewel.jpg" alt="Crown Jewel">
-                        </div>
-                        <div class="facility-info">
-                            <h3>Crown Jewel</h3>
-                            <p>Multipurpose area used for community gatherings that highlight the school's Catholic identity and promote spiritual and social engagement.</p>
-                        </div>
-                    </div>
-                    <div class="facility-card" id="computerLabFacilityCard">
-                        <div class="facility-img">
-                            <img src="images/computer-lab.jpg" alt="">
-                        </div>
-                        <div class="facility-info">
-                            <h3>Computer Laboratories</h3>
-                            <p>For hands-on IT education, programming, digital projectsm and collaboratives learning.</p>
-                        </div>
-                    </div>
-                    <div class="facility-card" id="gymFacilityCard">
-                        <div class="facility-img">
-                            <img src="images/gym.jpg" alt="St. Joseph Gymnasium">
-                        </div>
-                        <div class="facility-info">
-                            <h3>St. Joseph Gymnasium</h3>
-                            <p>Spacious gymnasium, basketball court, and outdoor sports facilities for physical development.</p>
-                        </div>
-                    </div>
-                    <div class="facility-card" id="chapelFacilityCard">
-                        <div class="facility-img">
-                            <img src="images/chapel.jpg" alt="Campus Chapel">
-                        </div>
-                        <div class="facility-info">
-                            <h3>Campus Chapel</h3>
-                            <p>Sacred space for worship, prayer, and spiritual reflection for the PCC community.</p>
-                        </div>
-                    </div>
-                    <div class="facility-card" id="aulaMinorFacilityCard">
-                        <div class="facility-img">
-                            <img src="images/Aula.jpg" alt="Aula Minor">
-                        </div>
-                        <div class="facility-info">
-                            <h3>Aula Minor</h3>
-                            <p>Aula Minor for school events, performances, and large gatherings.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Programs Section --> 
         <section id="programs">
             <div class="container">
@@ -1297,153 +1147,35 @@ img {
                     <h2>Programs & Courses</h2>
                 </div>
                 <div class="programs-container">
-                    <div class="program-card">
+                    <div class="program-card" onclick="openPreschoolOverlay()">
                         <div class="program-icon">👶</div>
                         <h3>Pre-School</h3>
                         <p>Nursery, Kindergarten, and Preparatory programs that provide a strong foundation for young learners.</p>
                     </div>
-                    <div class="program-card">
+                    <div class="program-card" onclick="openElementaryOverlay()">
                         <div class="program-icon">🧒</div>
                         <h3>Elementary</h3>
                         <p>Grades 1-6 with comprehensive curriculum focusing on core subjects and values formation.</p>
                     </div>
-                    <div class="program-card">
+                    <div class="program-card" onclick="openJuniorHighOverlay()">
                         <div class="program-icon">👦</div>
                         <h3>Junior High School</h3>
                         <p>Grades 7-10 following the K-12 curriculum with specialized tracks and electives.</p>
                     </div>
-                    <div class="program-card">
+                    <div class="program-card" onclick="openSeniorHighOverlay()">
                         <div class="program-icon">👨‍🎓</div>
                         <h3>Senior High School</h3>
                         <p>Academic, Technical-Vocational, and Sports tracks aligned with industry demands.</p>
                     </div>
-                    <div class="program-card">
+                    <div class="program-card" onclick="openCollegeOverlay()">
                         <div class="program-icon">🎓</div>
                         <h3>College</h3>
                         <p>Undergraduate programs in Education, Business, Information Technology, and more.</p>
                     </div>
-                    <div class="program-card">
+                    <div class="program-card" onclick="openGraduateOverlay()">
                         <div class="program-icon">📚</div>
                         <h3>Graduate School</h3>
                         <p>Master's and Doctoral programs for professional advancement and specialization.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section class="testimonials">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Students</h2>
-                </div>
-                <div class="testimonial-slider">
-                    <div class="testimonial-card">
-                        <div class="testimonial-img" style="filter: blur(1px); position: relative;">
-                            <img src="images/student1.jpg" alt="Locked Character" style="filter: blur(1px);">
-                            <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #910000; font-size: 1rem; font-weight: bold; background: rgba(255,255,255,0.8); padding: 0.5rem 1.2rem; border-radius: 10px;">LOCKED</span>
-                        </div>
-                        <div class="testimonial-text" style="color: #999; font-style: italic;">
-                            Unlock this student!<br>
-                            <span style="font-size: 1.1rem;">-Wanted-</span>
-                        </div>
-                        <div class="testimonial-author">- Gita, Janluis A.</div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-img">
-                            <img src="images/student2.jpg" alt="Hallig, Rino L.">
-                        </div>
-                        <div class="testimonial-text">
-                            Address: 23 A Caruncho Ave., <br>
-                            Malinao, Pasig City <br>
-                            <br>
-                            Contact No.: 0968-213-7314 <br>
-                            Email Address: Rinohallig@gmail.com <br>
-                        </div>
-                        <div class="testimonial-author">- Hallig, Rino L.</div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-img">
-                            <img src="images/student3.jpg" alt="Delacruz, Toby B.">
-                        </div>
-                        <div class="testimonial-text">
-                            Address: 39 G. Valderama St., <br>
-                            Bambang, Pasig City <br>
-                            <br>
-                            Contact No.: 0976-328-1100 <br>
-                            Email Address: Tobydelacruz2005@gmail.com
-                        </div>
-                        <div class="testimonial-author">- Delacruz, Toby B.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Contact Us</h2>
-                </div>
-                <div class="contact-container">
-                    <div class="contact-info">
-                        <h3>Get In Touch</h3>
-                        <div class="contact-details">
-                            <div class="contact-item">
-                                <div class="contact-icon">📍</div>
-                                <div>
-                                    <strong>Address:</strong><br>
-                                    Malinao Campus, <br>
-                                    Justice Ramon Jabson St., Malinao, Pasig City
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">📞</div>
-                                <div>
-                                    <strong>Phone:</strong><br>
-                                    (02) 8642-7451
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">✉️</div>
-                                <div>
-                                    <strong>Email:</strong><br>
-                                    info@pasigcatholic.edu.ph
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon">🌐</div>
-                                <div>
-                                    <strong>Website:</strong><br>
-                                    www.pasigcatholic.edu.ph
-                                </div>
-                            </div>
-                        </div>
-                        <h3>Office Hours</h3>
-                        <p>Monday to Friday: 8:00 AM - 5:00 PM</p>
-                        <p>Saturday: 8:00 AM - 12:00 NN</p>
-                    </div>
-                    <div class="contact-form">
-                        <h3>Send Us a Message</h3>
-                        <form id="messageForm">
-                            <div class="form-group">
-                                <label for="name">Full Name</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Subject</label>
-                                <input type="text" id="subject" name="subject" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Send Message</button>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -1466,11 +1198,11 @@ img {
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#facilities">Facilities</a></li>
-                        <li><a href="#programs">Programs</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="About.html">About Us</a></li>
+                        <li><a href="facilities.html">Facilities</a></li>
+                        <li><a href="Feature.html">Features</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                         <li><a href="core.html">Core Values</a></li>
                     </ul>
                 </div>
@@ -1496,7 +1228,7 @@ img {
             </div>
             <div class="copyright">
                 <p>&copy; 2025 Pasig Catholic College. All Rights Reserved. <br>
-                            Crafted with Psychology Students
+                    Crafted with Psychology Students
                 </p>
             </div>
         </div>
@@ -1505,123 +1237,130 @@ img {
     <!-- Back to Top Button -->
     <button class="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
 
-    <!-- Library Details Overlay -->
-    <div id="libraryOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Library details overlay">
+    <!-- Program Overlays -->
+    <div id="preschoolOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Pre-School program details">
         <div class="overlay-content">
-            <button class="close-overlay" onclick="closeLibraryOverlay()" aria-label="Close library details">&times;</button>
-            <h2 style="color: var(--primary);">Library</h2>
-            <div class="library-img">
-                <img src="images/library.jpg" alt="Library">
+            <button class="close-overlay" onclick="closePreschoolOverlay()" aria-label="Close Pre-School details">&times;</button>
+            <div class="program-overlay-content">
+                <div class="program-overlay-icon">👶</div>
+                <h2 style="color: var(--primary);">Pre-School Program</h2>
+                <p>Our Pre-School program provides a nurturing environment for young learners aged 3-5 years old, focusing on holistic development through play-based learning and early childhood education principles.</p>
+                <ul class="program-details-list">
+                    <li>Nursery (3-4 years old)</li>
+                    <li>Kindergarten (4-5 years old)</li>
+                    <li>Preparatory (5-6 years old)</li>
+                    <li>Play-based learning approach</li>
+                    <li>Early literacy and numeracy skills</li>
+                    <li>Social and emotional development</li>
+                    <li>Creative arts and physical activities</li>
+                </ul>
+                <div class="program-highlight">Enroll your child for a strong educational foundation!</div>
             </div>
-            <p>Our library is well-stocked with a wide range of books, journals, and digital resources to support learning and research for all students and faculty. It offers a quiet and comfortable environment for study, group work, and academic exploration.</p>
-            <ul class="library-details-list">
-                <li>Extensive collection of academic books and references</li>
-                <li>Access to online journals and e-books</li>
-                <li>Study areas and discussion rooms</li>
-                <li>Computer terminals for research</li>
-                <li>Friendly and helpful library staff</li>
-            </ul>
-            <div class="library-highlight">Visit the library to discover more resources!</div>
         </div>
     </div>
 
-    <!-- Crown Jewel Details Overlay -->
-    <div id="crownJewelOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Crown Jewel details overlay">
+    <div id="elementaryOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Elementary program details">
         <div class="overlay-content">
-            <button class="close-overlay" onclick="closeCrownJewelOverlay()" aria-label="Close Crown Jewel details">&times;</button>
-            <h2 style="color: var(--primary);">Crown Jewel</h2>
-            <div class="library-img">
-                <img src="images/crown-jewel.jpg" alt="Crown Jewel">
+            <button class="close-overlay" onclick="closeElementaryOverlay()" aria-label="Close Elementary details">&times;</button>
+            <div class="program-overlay-content">
+                <div class="program-overlay-icon">🧒</div>
+                <h2 style="color: var(--primary);">Elementary Program</h2>
+                <p>Our Elementary program (Grades 1-6) provides a comprehensive education that balances academic excellence with character formation, preparing students for higher education and life.</p>
+                <ul class="program-details-list">
+                    <li>Grades 1-6 comprehensive curriculum</li>
+                    <li>Core subjects: English, Math, Science, Filipino</li>
+                    <li>Values Education and Christian Living</li>
+                    <li>MAPEH (Music, Arts, PE, Health)</li>
+                    <li>Technology and Livelihood Education</li>
+                    <li>Extracurricular activities and clubs</li>
+                    <li>Remedial and enrichment programs</li>
+                </ul>
+                <div class="program-highlight">Build a strong academic foundation with us!</div>
             </div>
-            <p>The Crown Jewel is a multipurpose area at Pasig Catholic College, designed for community gatherings, school events, and special occasions. It highlights the school's Catholic identity and serves as a venue for spiritual, cultural, and social engagement.</p>
-            <ul class="library-details-list">
-                <li>Spacious hall for assemblies and celebrations</li>
-                <li>Equipped with modern audio-visual facilities</li>
-                <li>Hosts religious, academic, and social events</li>
-                <li>Comfortable seating and flexible arrangements</li>
-                <li>Accessible to students, faculty, and guests</li>
-            </ul>
-            <div class="library-highlight">Experience the heart of PCC's community life at the Crown Jewel!</div>
         </div>
     </div>
 
-    <!-- Computer Laboratories Overlay -->
-    <div id="computerLabOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Computer Laboratories details overlay">
+    <div id="juniorHighOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Junior High School program details">
         <div class="overlay-content">
-            <button class="close-overlay" onclick="closeComputerLabOverlay()" aria-label="Close Computer Laboratories details">&times;</button>
-            <h2 style="color: var(--primary);">Computer Laboratories</h2>
-            <div class="library-img">
-                <img src="images/computer-lab.jpg" alt="Computer Laboratories">
+            <button class="close-overlay" onclick="closeJuniorHighOverlay()" aria-label="Close Junior High details">&times;</button>
+            <div class="program-overlay-content">
+                <div class="program-overlay-icon">👦</div>
+                <h2 style="color: var(--primary);">Junior High School Program</h2>
+                <p>Our Junior High School program (Grades 7-10) follows the K-12 curriculum with specialized tracks and electives that prepare students for senior high school and future careers.</p>
+                <ul class="program-details-list">
+                    <li>Grades 7-10 K-12 curriculum</li>
+                    <li>Core academic subjects</li>
+                    <li>Technology and Livelihood Education tracks</li>
+                    <li>Arts and Sports tracks</li>
+                    <li>Career guidance and counseling</li>
+                    <li>Leadership training programs</li>
+                    <li>Work immersion opportunities</li>
+                </ul>
+                <div class="program-highlight">Discover your potential in our diverse programs!</div>
             </div>
-            <p>Our state-of-the-art computer laboratories provide students with hands-on IT education, programming experience, and digital project development. Equipped with modern hardware and software to support collaborative learning and technological innovation.</p>
-            <ul class="library-details-list">
-                <li>Modern computer systems with latest software</li>
-                <li>High-speed internet connectivity</li>
-                <li>Programming and development environments</li>
-                <li>Collaborative workstations for group projects</li>
-                <li>Supervised by experienced IT instructors</li>
-            </ul>
-            <div class="library-highlight">Develop your digital skills in our advanced computer labs!</div>
         </div>
     </div>
 
-    <!-- St. Joseph Gymnasium Overlay -->
-    <div id="gymOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="St. Joseph Gymnasium details overlay">
+    <div id="seniorHighOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Senior High School program details">
         <div class="overlay-content">
-            <button class="close-overlay" onclick="closeGymOverlay()" aria-label="Close St. Joseph Gymnasium details">&times;</button>
-            <h2 style="color: var(--primary);">St. Joseph Gymnasium</h2>
-            <div class="library-img">
-                <img src="images/gym.jpg" alt="St. Joseph Gymnasium">
+            <button class="close-overlay" onclick="closeSeniorHighOverlay()" aria-label="Close Senior High details">&times;</button>
+            <div class="program-overlay-content">
+                <div class="program-overlay-icon">👨‍🎓</div>
+                <h2 style="color: var(--primary);">Senior High School Program</h2>
+                <p>Our Senior High School program offers Academic, Technical-Vocational, and Sports tracks designed to prepare students for college, entrepreneurship, or immediate employment.</p>
+                <ul class="program-details-list">
+                    <li>Academic Track (STEM, ABM, HUMSS)</li>
+                    <li>Technical-Vocational-Livelihood Track</li>
+                    <li>Sports Track</li>
+                    <li>Industry-aligned curriculum</li>
+                    <li>Work immersion programs</li>
+                    <li>College preparation courses</li>
+                    <li>Career assessment and guidance</li>
+                </ul>
+                <div class="program-highlight">Choose your path to success with our SHS programs!</div>
             </div>
-            <p>The St. Joseph Gymnasium is a versatile sports facility that hosts various athletic events, school gatherings, and physical education activities. With its spacious design and modern amenities, it serves as a hub for physical development and community events.</p>
-            <ul class="library-details-list">
-                <li>Full-size basketball court with professional flooring</li>
-                <li>Volleyball and badminton court markings</li>
-                <li>Bleacher seating for spectators</li>
-                <li>Sound system for events and announcements</li>
-                <li>Equipment storage and locker rooms</li>
-            </ul>
-            <div class="library-highlight">Stay active and healthy in our well-equipped gymnasium!</div>
         </div>
     </div>
 
-    <!-- Campus Chapel Overlay -->
-    <div id="chapelOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Campus Chapel details overlay">
+    <div id="collegeOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="College program details">
         <div class="overlay-content">
-            <button class="close-overlay" onclick="closeChapelOverlay()" aria-label="Close Campus Chapel details">&times;</button>
-            <h2 style="color: var(--primary);">Campus Chapel</h2>
-            <div class="library-img">
-                <img src="images/chapel.jpg" alt="Campus Chapel">
+            <button class="close-overlay" onclick="closeCollegeOverlay()" aria-label="Close College details">&times;</button>
+            <div class="program-overlay-content">
+                <div class="program-overlay-icon">🎓</div>
+                <h2 style="color: var(--primary);">College Programs</h2>
+                <p>Our College programs offer undergraduate degrees in various fields, combining academic excellence with practical skills development and industry exposure.</p>
+                <ul class="program-details-list">
+                    <li>Bachelor of Elementary Education</li>
+                    <li>Bachelor of Secondary Education</li>
+                    <li>Bachelor of Science in Business Administration</li>
+                    <li>Bachelor of Science in Information Technology</li>
+                    <li>Bachelor of Arts in Psychology</li>
+                    <li>Bachelor of Science in Hospitality Management</li>
+                    <li>Customized internship programs</li>
+                </ul>
+                <div class="program-highlight">Start your professional journey with PCC College!</div>
             </div>
-            <p>The Campus Chapel provides a sacred space for worship, prayer, and spiritual reflection for the PCC community. It serves as the heart of our Catholic identity, offering daily Mass, prayer services, and moments of quiet contemplation.</p>
-            <ul class="library-details-list">
-                <li>Daily Mass and liturgical celebrations</li>
-                <li>Quiet space for personal prayer and reflection</li>
-                <li>Religious icons and artwork</li>
-                <li>Confessionals and spiritual guidance</li>
-                <li>Seasonal decorations and liturgical elements</li>
-            </ul>
-            <div class="library-highlight">Nourish your spiritual life in our peaceful chapel!</div>
         </div>
     </div>
 
-    <!-- Aula Minor Overlay -->
-    <div id="aulaMinorOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Aula Minor details overlay">
+    <div id="graduateOverlay" class="overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Graduate School program details">
         <div class="overlay-content">
-            <button class="close-overlay" onclick="closeAulaMinorOverlay()" aria-label="Close Aula Minor details">&times;</button>
-            <h2 style="color: var(--primary);">Aula Minor</h2>
-            <div class="library-img">
-                <img src="images/Aula.jpg" alt="Aula Minor">
+            <button class="close-overlay" onclick="closeGraduateOverlay()" aria-label="Close Graduate School details">&times;</button>
+            <div class="program-overlay-content">
+                <div class="program-overlay-icon">📚</div>
+                <h2 style="color: var(--primary);">Graduate School Programs</h2>
+                <p>Our Graduate School offers Master's and Doctoral programs for professionals seeking advanced knowledge, research skills, and career advancement in their respective fields.</p>
+                <ul class="program-details-list">
+                    <li>Master of Arts in Education</li>
+                    <li>Master in Business Administration</li>
+                    <li>Master in Public Administration</li>
+                    <li>Doctor of Education</li>
+                    <li>Doctor of Philosophy in Leadership</li>
+                    <li>Weekend and evening classes available</li>
+                    <li>Thesis and non-thesis options</li>
+                </ul>
+                <div class="program-highlight">Advance your career with our graduate programs!</div>
             </div>
-            <p>The Aula Minor is a versatile event space designed for school performances, presentations, seminars, and large gatherings. With its professional stage setup and comfortable seating, it provides an ideal venue for academic and cultural events.</p>
-            <ul class="library-details-list">
-                <li>Professional stage with lighting system</li>
-                <li>Audio-visual equipment for presentations</li>
-                <li>Comfortable seating for large audiences</li>
-                <li>Backstage area for performers</li>
-                <li>Flexible arrangement for various events</li>
-            </ul>
-            <div class="library-highlight">Experience memorable events in our Aula Minor!</div>
         </div>
     </div>
 
@@ -1676,16 +1415,6 @@ img {
                 behavior: 'smooth'
             });
         });
-        
-        // Form submission
-        const messageForm = document.getElementById('messageForm');
-        if (messageForm) {
-            messageForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you for your message! We will get back to you soon.');
-                this.reset();
-            });
-        }
     });
 
     // Application Overlay Functions
@@ -1709,138 +1438,66 @@ img {
         closeOverlay();
     }
 
-    // Crown Jewel overlay logic
-    const crownJewelCard = document.getElementById('crownJewelFacilityCard');
-    const crownJewelOverlay = document.getElementById('crownJewelOverlay');
-    
-    function openCrownJewelOverlay() {
-        crownJewelOverlay.classList.add('active');
-        crownJewelOverlay.setAttribute('aria-hidden', 'false');
+    // Program Overlay Functions
+    function openPreschoolOverlay() {
+        document.getElementById('preschoolOverlay').classList.add('active');
         document.body.style.overflow = 'hidden';
-    }
-    
-    function closeCrownJewelOverlay() {
-        crownJewelOverlay.classList.remove('active');
-        crownJewelOverlay.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-    }
-    
-    if (crownJewelCard) {
-        crownJewelCard.addEventListener('click', openCrownJewelOverlay);
     }
 
-    // Library overlay logic
-    const libraryCard = document.getElementById('libraryFacilityCard');
-    const libraryOverlay = document.getElementById('libraryOverlay');
-    
-    function openLibraryOverlay() {
-        libraryOverlay.classList.add('active');
-        libraryOverlay.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-    }
-    
-    function closeLibraryOverlay() {
-        libraryOverlay.classList.remove('active');
-        libraryOverlay.setAttribute('aria-hidden', 'true');
+    function closePreschoolOverlay() {
+        document.getElementById('preschoolOverlay').classList.remove('active');
         document.body.style.overflow = '';
-    }
-    
-    if (libraryCard) {
-        libraryCard.addEventListener('click', openLibraryOverlay);
     }
 
-    // Computer Lab overlay logic
-    const computerLabCard = document.getElementById('computerLabFacilityCard');
-    const computerLabOverlay = document.getElementById('computerLabOverlay');
-    
-    function openComputerLabOverlay() {
-        computerLabOverlay.classList.add('active');
-        computerLabOverlay.setAttribute('aria-hidden', 'false');
+    function openElementaryOverlay() {
+        document.getElementById('elementaryOverlay').classList.add('active');
         document.body.style.overflow = 'hidden';
-    }
-    
-    function closeComputerLabOverlay() {
-        computerLabOverlay.classList.remove('active');
-        computerLabOverlay.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-    }
-    
-    if (computerLabCard) {
-        computerLabCard.addEventListener('click', openComputerLabOverlay);
     }
 
-    // Gym overlay logic
-    const gymCard = document.getElementById('gymFacilityCard');
-    const gymOverlay = document.getElementById('gymOverlay');
-    
-    function openGymOverlay() {
-        gymOverlay.classList.add('active');
-        gymOverlay.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-    }
-    
-    function closeGymOverlay() {
-        gymOverlay.classList.remove('active');
-        gymOverlay.setAttribute('aria-hidden', 'true');
+    function closeElementaryOverlay() {
+        document.getElementById('elementaryOverlay').classList.remove('active');
         document.body.style.overflow = '';
-    }
-    
-    if (gymCard) {
-        gymCard.addEventListener('click', openGymOverlay);
     }
 
-    // Chapel overlay logic
-    const chapelCard = document.getElementById('chapelFacilityCard');
-    const chapelOverlay = document.getElementById('chapelOverlay');
-    
-    function openChapelOverlay() {
-        chapelOverlay.classList.add('active');
-        chapelOverlay.setAttribute('aria-hidden', 'false');
+    function openJuniorHighOverlay() {
+        document.getElementById('juniorHighOverlay').classList.add('active');
         document.body.style.overflow = 'hidden';
-    }
-    
-    function closeChapelOverlay() {
-        chapelOverlay.classList.remove('active');
-        chapelOverlay.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-    }
-    
-    if (chapelCard) {
-        chapelCard.addEventListener('click', openChapelOverlay);
     }
 
-    // Aula Minor overlay logic
-    const aulaMinorCard = document.getElementById('aulaMinorFacilityCard');
-    const aulaMinorOverlay = document.getElementById('aulaMinorOverlay');
-    
-    function openAulaMinorOverlay() {
-        aulaMinorOverlay.classList.add('active');
-        aulaMinorOverlay.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-    }
-    
-    function closeAulaMinorOverlay() {
-        aulaMinorOverlay.classList.remove('active');
-        aulaMinorOverlay.setAttribute('aria-hidden', 'true');
+    function closeJuniorHighOverlay() {
+        document.getElementById('juniorHighOverlay').classList.remove('active');
         document.body.style.overflow = '';
     }
-    
-    if (aulaMinorCard) {
-        aulaMinorCard.addEventListener('click', openAulaMinorOverlay);
+
+    function openSeniorHighOverlay() {
+        document.getElementById('seniorHighOverlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
-    
-    // Close overlay on ESC key for all overlays
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            if (libraryOverlay.classList.contains('active')) closeLibraryOverlay();
-            if (crownJewelOverlay.classList.contains('active')) closeCrownJewelOverlay();
-            if (computerLabOverlay.classList.contains('active')) closeComputerLabOverlay();
-            if (gymOverlay.classList.contains('active')) closeGymOverlay();
-            if (chapelOverlay.classList.contains('active')) closeChapelOverlay();
-            if (aulaMinorOverlay.classList.contains('active')) closeAulaMinorOverlay();
-            if (document.getElementById('applicationOverlay').classList.contains('active')) closeOverlay();
-        }
-    });
+
+    function closeSeniorHighOverlay() {
+        document.getElementById('seniorHighOverlay').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function openCollegeOverlay() {
+        document.getElementById('collegeOverlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeCollegeOverlay() {
+        document.getElementById('collegeOverlay').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function openGraduateOverlay() {
+        document.getElementById('graduateOverlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeGraduateOverlay() {
+        document.getElementById('graduateOverlay').classList.remove('active');
+        document.body.style.overflow = '';
+    }
 
     // Close overlay when clicking on the background
     document.querySelectorAll('.overlay').forEach(overlay => {
@@ -1850,6 +1507,19 @@ img {
                 document.body.style.overflow = '';
             }
         });
+    });
+
+    // Close overlay on ESC key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const overlays = document.querySelectorAll('.overlay');
+            overlays.forEach(overlay => {
+                if (overlay.classList.contains('active')) {
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
     });
     </script>
 </body>
