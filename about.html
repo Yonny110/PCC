@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Pasig Catholic College</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles for About page */
+        .page-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('images/About.jpg') center/cover no-repeat;
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .page-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .page-hero p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+        }
+
+        .about-content-section {
+            padding: 5rem 0;
+            background: var(--light-bg);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-text h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: var(--muted);
+        }
+
+        .mission-vision-section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .mission-vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(255,0,0,0.12);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .values-list {
+            list-style: none;
+            text-align: left;
+            margin: 1.5rem 0;
+        }
+
+        .values-list li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .values-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .values-list[style*="decimal"] {
+            list-style: decimal;
+            padding-left: 1.5rem;
+        }
+
+        .values-list[style*="decimal"] li {
+            padding-left: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .values-list[style*="decimal"] li::before {
+            content: none;
+        }
+
+        .values-section {
+            padding: 5rem 0;
+            background: var(--light-bg);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .value-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(255, 0, 0, 0.08);
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .value-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .value-card p {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .leadership-section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .leader-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(255, 0, 0, 0.08);
+        }
+
+        .leader-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .leader-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .leader-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .leader-role {
+            color: var(--muted);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .leader-card p {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: 6rem 0 3rem;
+                margin-top: 70px;
+            }
+
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .page-hero p {
+                font-size: 1.2rem;
+            }
+
+            .mission-vision-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .card {
+                padding: 2rem;
+            }
+
+            .values-grid, .leadership-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .page-hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-text h2 {
+                font-size: 1.8rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="site-header" id="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html">
+                <img src="images/pcc-logo.png" alt="Pasig Catholic College" height="44">
+                <span>Pasig Catholic College</span>
+            </a>
+
+            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+
+            <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+                <ul>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="facilities.html">Facilities</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="admissions.html" class="btn-nav">Apply Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- About Hero -->
+        <section class="page-hero">
+            <div class="container">
+                <h1 style="color: white; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);">About</h1>
+                <p>Quality Catholic Education Since 1913</p>
+            </div>
+        </section>
+
+        <!-- About Content -->
+        <section class="about-content-section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h2>Our History</h2>
+                        <p>Founded in 1913, Pasig Catholic College has been a pillar of quality Catholic education in Pasig City for over a century. Established as part of the Immaculate Conception Parish, PCC has grown from humble beginnings to become a comprehensive educational institution serving students from pre-school to graduate studies.</p>
+                        
+                        <p>Throughout its history, PCC has remained committed to its mission of providing education that integrates faith, learning, and living. The college has adapted to changing times while maintaining its core Catholic identity and values.</p>
+                        
+                        <h2>Our Identity</h2>
+                        <p>As a Catholic educational institution, PCC is committed to the formation of individuals who are not only academically competent but also morally upright and socially responsible. Our educational philosophy is rooted in the teachings of the Catholic Church and the rich tradition of Catholic education.</p>
+                        
+                        <p>We believe that education should develop the whole person - mind, body, and spirit - and prepare students to make meaningful contributions to society while living out their faith in their daily lives.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission & Vision -->
+        <section class="mission-vision-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Mission & Vision</h2>
+                </div>
+                
+                <div class="mission-vision-grid">
+                    <div class="mission-card card">
+                        <h3>Our Mission</h3>
+                        <p>As we advance towards our vision, we seek to live out and maintain the following principles:</p>
+                        <ol class="values-list" style="list-style: decimal; padding-left: 1.5rem; text-align: left;">
+                            <li>We are role models in the practice of our Christian faith</li>
+                            <li>We discern and develop what is distinctly Catholic in our educational system</li>
+                            <li>We promote the value of excellence at all levels of the institution's operation</li>
+                            <li>As a community, we adhere to social transformation through immersion and advocacy, community outreach and parish involvement</li>
+                            <li>We empower our workforce by professionalizing all operations and setting up of more effective systems of coordination, communication and networking among units of the institution</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="vision-card card">
+                        <h3>Our Vision</h3>
+                        <p>PASIG CATHOLIC COLLEGE, as part of the Immaculate Conception Parish, envisions itself as an evangelized and evangelizing community whose commitment to quality Catholic education promotes a culture of excellence and the task of social transformation.</p>
+                        <p>We strive to form individuals who are competent, compassionate, and committed to serving God and society, contributing to the building of a just and humane world.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Values -->
+        <section class="values-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Core Values</h2>
+                    <p>The foundation of everything we do at Pasig Catholic College</p>
+                </div>
+                
+                <div class="values-grid">
+                    <div class="value-card">
+                        <h3>Christian Discipleship</h3>
+                        <p>Living our faith through piety, knowledge of Catholic teachings, faithfulness, and gratitude in all aspects of life.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <h3>Respect for Human Dignity</h3>
+                        <p>Upholding integrity, goodness, wellness, and cleanliness in our interactions with others.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <h3>Preferential Option for the Poor</h3>
+                        <p>Demonstrating empathy, justice, and courage in serving those most in need.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <h3>Excellence</h3>
+                        <p>Pursuing competence, resourcefulness, and discipline in all our endeavors.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <h3>Responsible Stewardship</h3>
+                        <p>Exercising charity, dependability, prudence, and love for the environment.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <h3>Commitment to the Local Church</h3>
+                        <p>Fostering communion, parish involvement, and nationalism in our community.</p>
+                    </div>
+                </div>
+                
+                <div class="text-center" style="margin-top: 3rem;">
+                    <a href="core.html" class="btn btn-primary">Learn More About Our Values</a>
+                </div>
+            </div>
+        </section>
+
+        
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Pasig Catholic College</h3>
+                    <p>Providing quality Catholic education since 1913. Nurturing minds, shaping character, and building futures.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/pasigcatholiccollegeph" title="Facebook">FB</a>
+                        <a href="https://x.com/i/flow/login?redirect_after_login=%2FPCC1913Official" title="Twitter">X</a>
+                        <a href="https://www.youtube.com/channel/UCuV30fNIIh97soyu73FJuOw" title="YouTube">YT</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="facilities.html">Facilities</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="core.html">Core Values</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Academic Programs</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#programs">Pre-School</a></li>
+                        <li><a href="index.html#programs">Elementary</a></li>
+                        <li><a href="index.html#programs">Junior High School</a></li>
+                        <li><a href="index.html#programs">Senior High School</a></li>
+                        <li><a href="index.html#programs">College</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li>Malinao Campus</li>
+                        <li>Justice Ramon Jabson St., Malinao, Pasig City</li>
+                        <li>(02) 8642-7451</li>
+                        <li>info@pasigcatholic.edu.ph</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Pasig Catholic College. All Rights Reserved. <br>
+                    Crafted with Psychology Students
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

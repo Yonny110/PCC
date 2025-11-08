@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - Pasig Catholic College</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles for Features page */
+        .page-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('images/logo.jpg') center/cover no-repeat;
+            color: white;
+            padding: 8rem 0 4rem;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .page-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .page-hero p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+        }
+
+        .features-detail-section {
+            padding: 5rem 0;
+            background: var(--light-bg);
+        }
+
+        .feature-detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-detail-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(255, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-detail-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-detail-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 32px rgba(255,0,0,0.12);
+        }
+
+        .feature-detail-icon {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-detail-card h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .feature-detail-card p {
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-benefits {
+            list-style: none;
+            text-align: left;
+            margin: 1.5rem 0;
+        }
+
+        .feature-benefits li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .feature-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 5rem 0;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Academic Excellence Section */
+        .academic-section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .academic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .academic-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(255, 0, 0, 0.08);
+        }
+
+        .academic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .academic-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .academic-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .academic-card p {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* Campus Life Section */
+        .campus-life-section {
+            padding: 5rem 0;
+            background: var(--light-bg);
+        }
+
+        .life-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .life-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(255, 0, 0, 0.08);
+        }
+
+        .life-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .life-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .life-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .life-card p {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: 6rem 0 3rem;
+                margin-top: 70px;
+            }
+
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .page-hero p {
+                font-size: 1.2rem;
+            }
+
+            .feature-detail-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .feature-detail-card {
+                padding: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .page-hero p {
+                font-size: 1.1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-detail-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="site-header" id="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html">
+                <img src="images/pcc-logo.png" alt="Pasig Catholic College" height="44">
+                <span>Pasig Catholic College</span>
+            </a>
+
+            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+
+            <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="features.html" class="active">Features</a></li>
+                    <li><a href="facilities.html">Facilities</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="admissions.html" class="btn-nav">Apply Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- Features Hero -->
+        <section class="page-hero">
+            <div class="container">
+                <h1>Our Features</h1>
+                <p>Discover what makes Pasig Catholic College exceptional</p>
+            </div>
+        </section>
+
+        <!-- Features Detail Section -->
+        <section class="features-detail-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Why Choose PCC?</h2>
+                    <p>Comprehensive features that set us apart in Catholic education</p>
+                </div>
+                
+                <div class="feature-detail-grid">
+                    <div class="feature-detail-card">
+                        <h3>Quality Education</h3>
+                        <p>Academic excellence rooted in Catholic values and tradition. Our curriculum combines rigorous academics with moral and spiritual development to prepare students for success in all aspects of life.</p>
+                        <ul class="feature-benefits">
+                            <li>Comprehensive K-12 curriculum</li>
+                            <li>Specialized tracks in Senior High School</li>
+                            <li>Industry-relevant college programs</li>
+                            <li>Dedicated and qualified faculty</li>
+                            <li>Modern teaching methodologies</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-detail-card">
+                        <h3>Faith Formation</h3>
+                        <p>Nurturing spiritual growth and moral development through regular religious activities, retreats, and community service programs that strengthen Catholic identity.</p>
+                        <ul class="feature-benefits">
+                            <li>Daily prayer and weekly Mass</li>
+                            <li>Religious education integrated in curriculum</li>
+                            <li>Retreats and recollections</li>
+                            <li>Community outreach programs</li>
+                            <li>Sacramental preparation</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-detail-card">
+                        <h3>Modern Facilities</h3>
+                        <p>State-of-the-art learning environments and resources including smart classrooms, laboratories, and specialized learning spaces designed for 21st century education.</p>
+                        <ul class="feature-benefits">
+                            <li>Fully-equipped science laboratories</li>
+                            <li>Computer labs with latest technology</li>
+                            <li>Comprehensive library resources</li>
+                            <li>Sports and recreational facilities</li>
+                            <li>Specialized learning spaces</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-detail-card">
+                        <h3>Community Engagement</h3>
+                        <p>Developing socially responsible and compassionate individuals through outreach programs, community partnerships, and service-learning opportunities.</p>
+                        <ul class="feature-benefits">
+                            <li>Community outreach programs</li>
+                            <li>Service-learning opportunities</li>
+                            <li>Partnerships with local organizations</li>
+                            <li>Environmental advocacy</li>
+                            <li>Social awareness campaigns</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-detail-card">
+                        <h3>Qualified Faculty</h3>
+                        <p>Our dedicated teaching staff consists of experienced educators who are committed to student success and continuous professional development.</p>
+                        <ul class="feature-benefits">
+                            <li>Highly qualified and experienced teachers</li>
+                            <li>Continuous professional development</li>
+                            <li>Student-centered teaching approach</li>
+                            <li>Mentorship and guidance programs</li>
+                            <li>Research and publication opportunities</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="feature-detail-card">
+                        <h3>Holistic Development</h3>
+                        <p>We focus on developing the whole person - intellectually, spiritually, emotionally, socially, and physically - through various programs and activities.</p>
+                        <ul class="feature-benefits">
+                            <li>Academic excellence programs</li>
+                            <li>Sports and athletics</li>
+                            <li>Arts and culture activities</li>
+                            <li>Leadership training</li>
+                            <li>Character formation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Academic Excellence Section -->
+        <section class="academic-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Academic Excellence</h2>
+                    <p>Comprehensive educational programs from pre-school to graduate studies</p>
+                </div>
+                
+                <div class="academic-grid">
+                    <div class="academic-card">
+                        <h3>Pre-School</h3>
+                        <p>Foundation-building programs for young learners with play-based learning and early childhood development.</p>
+                    </div>
+                    
+                    <div class="academic-card">
+                        <h3>Elementary</h3>
+                        <p>Comprehensive basic education with focus on core subjects, values formation, and holistic development.</p>
+                    </div>
+                    
+                    <div class="academic-card">
+                        <h3>Junior High School</h3>
+                        <p>K-12 curriculum with specialized tracks preparing students for senior high school and future careers.</p>
+                    </div>
+                    
+                    <div class="academic-card">
+                        <h3>Senior High School</h3>
+                        <p>Academic, Technical-Vocational, and Sports tracks aligned with industry demands and college preparation.</p>
+                    </div>
+                    
+                    <div class="academic-card">
+                        <h3>College</h3>
+                        <p>Undergraduate programs in Education, Business, Information Technology, and other professional fields.</p>
+                    </div>
+                    
+                    <div class="academic-card">
+                        <h3>Graduate School</h3>
+                        <p>Master's and Doctoral programs for professional advancement, research, and specialization.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Campus Life Section -->
+        <section class="campus-life-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Campus Life</h2>
+                    <p>Vibrant student life beyond the classroom</p>
+                </div>
+                
+                <div class="life-grid">
+                    <div class="life-card">
+                        <h3>Cultural Activities</h3>
+                        <p>Various clubs, organizations, and events that celebrate arts, culture, and student talents.</p>
+                    </div>
+                    
+                    <div class="life-card">
+                        <h3>Athletics & Sports</h3>
+                        <p>Competitive sports teams and recreational activities promoting physical wellness and teamwork.</p>
+                    </div>
+                    
+                    <div class="life-card">
+                        <h3>Spiritual Activities</h3>
+                        <p>Religious organizations, retreats, and community service fostering spiritual growth.</p>
+                    </div>
+                    
+                    <div class="life-card">
+                        <h3>Student Organizations</h3>
+                        <p>Various clubs and groups catering to diverse interests and leadership development.</p>
+                    </div>
+                    
+                    <div class="life-card">
+                        <h3>Competitions</h3>
+                        <p>Academic, cultural, and sports competitions that showcase student excellence.</p>
+                    </div>
+                    
+                    <div class="life-card">
+                        <h3>Community Outreach</h3>
+                        <p>Service-learning programs and outreach activities promoting social responsibility.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer from index.html -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Pasig Catholic College</h3>
+                    <p>Providing quality Catholic education since 1913. Nurturing minds, shaping character, and building futures.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/pasigcatholiccollegeph" title="Facebook">FB</a>
+                        <a href="https://x.com/i/flow/login?redirect_after_login=%2FPCC1913Official" title="Twitter">X</a>
+                        <a href="https://www.youtube.com/channel/UCuV30fNIIh97soyu73FJuOw" title="YouTube">YT</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="facilities.html">Facilities</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="core.html">Core Values</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Academic Programs</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#programs">Pre-School</a></li>
+                        <li><a href="index.html#programs">Elementary</a></li>
+                        <li><a href="index.html#programs">Junior High School</a></li>
+                        <li><a href="index.html#programs">Senior High School</a></li>
+                        <li><a href="index.html#programs">College</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li>Malinao Campus</li>
+                        <li>Justice Ramon Jabson St., Malinao, Pasig City</li>
+                        <li>(02) 8642-7451</li>
+                        <li>info@pasigcatholic.edu.ph</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Pasig Catholic College. All Rights Reserved. <br>
+                    Crafted with Psychology Students
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
+
+    <script>
+        // Mobile navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.getElementById('navToggle');
+            const siteNav = document.getElementById('siteNav');
+            
+            if (navToggle && siteNav) {
+                navToggle.addEventListener('click', function() {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    siteNav.classList.toggle('active');
+                });
+            }
+            
+            // Back to Top Button
+            const backToTopButton = document.querySelector('.back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

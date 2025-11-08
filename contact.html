@@ -4,127 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Pasig Catholic College</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #fff 0%, #ffe5e5 100%);
-            min-height: 100vh;
-        }
-
-        /* Header Styles */
-        .site-header {
-            background: rgba(255, 255, 255, 0.98);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 1rem 0;
-        }
-
-        .header-inner {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 15px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-            color: #910000;
-        }
-
-        .brand img {
-            height: 48px;
-            width: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .brand:hover img {
-            transform: scale(1.05);
-        }
-
-        .site-nav ul {
-            display: flex;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .site-nav a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 0.5rem 1.2rem;
-            border-radius: 20px;
-            transition: background 0.25s, color 0.25s;
-        }
-
-        .site-nav a:hover {
-            color: #910000;
-            background: #FFE5E5;
-        }
-
-        .back-home {
-            background: #910000;
-            color: white !important;
-            border: 2px solid #910000;
-        }
-
-        .back-home:hover {
-            background: #cc0000 !important;
-            border-color: #cc0000;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 15px;
-            margin-top: 80px; /* Account for fixed header */
-        }
-
-        .section-title {
+        /* Additional styles for Contact page */
+        .page-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('images/pcc-logo.png') center/cover no-repeat;
+            color: white;
+            padding: 8rem 0 4rem;
             text-align: center;
-            margin-bottom: 3rem;
+            margin-top: 80px;
         }
 
-        .section-title h2 {
-            color: #910000;
-            font-size: 2.5rem;
+        .page-hero h1 {
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
+            font-weight: 800;
         }
 
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: #910000;
-            border-radius: 2px;
+        .page-hero p {
+            font-size: 1.4rem;
+            opacity: 0.9;
         }
 
-        /* Contact Section */
+        .contact-section {
+            padding: 5rem 0;
+            background: var(--light-bg);
+        }
+
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -134,7 +41,7 @@
 
         .contact-info h3 {
             margin-bottom: 1.5rem;
-            color: #910000;
+            color: var(--primary);
             font-size: 1.5rem;
         }
 
@@ -146,20 +53,21 @@
             display: flex;
             align-items: flex-start;
             margin-bottom: 1.5rem;
-            padding: 1rem;
+            padding: 1.5rem;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
         }
 
         .contact-item:hover {
             transform: translateY(-5px);
+            box-shadow: var(--shadow);
         }
 
         .contact-icon {
             margin-right: 1rem;
-            color: #910000;
+            color: var(--primary);
             font-size: 1.5rem;
             min-width: 30px;
             text-align: center;
@@ -170,21 +78,21 @@
         }
 
         .contact-item strong {
-            color: #910000;
+            color: var(--primary);
             display: block;
             margin-bottom: 0.3rem;
         }
 
         .contact-form {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            padding: 2.5rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow);
         }
 
         .contact-form h3 {
             margin-bottom: 1.5rem;
-            color: #910000;
+            color: var(--primary);
             font-size: 1.5rem;
         }
 
@@ -196,24 +104,26 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
-            color: #333;
+            color: var(--text);
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 0.8rem 1rem;
             border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            border-radius: var(--border-radius);
             font-size: 1rem;
             font-family: inherit;
-            transition: border-color 0.3s ease;
+            transition: var(--transition);
         }
 
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
-            border-color: #910000;
+            border-color: var(--primary);
         }
 
         .form-group textarea {
@@ -221,42 +131,133 @@
             resize: vertical;
         }
 
-        .btn {
-            display: inline-flex;
+        .office-hours {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            margin-top: 2rem;
+        }
+
+        .office-hours h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .office-hours p {
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .office-hours p:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .map-container {
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 400px;
+        }
+
+        .map-placeholder {
+            height: 100%;
+            background: var(--accent);
+            display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            min-width: 160px;
-            border: none;
-            cursor: pointer;
-            font-family: inherit;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
         }
 
-        .btn-primary {
-            background: #910000;
-            color: white;
-            border: 2px solid #910000;
+        /* Departments Section */
+        .departments-section {
+            padding: 5rem 0;
+            background: var(--light-bg);
         }
 
-        .btn-primary:hover {
-            background: #cc0000;
-            border-color: #cc0000;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(255,0,0,0.18);
+        .departments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
-        /* Office Hours */
-        .contact-info p {
-            margin-bottom: 0.5rem;
-            padding: 0.8rem;
+        .department-card {
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(255, 0, 0, 0.08);
+        }
+
+        .department-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .department-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .department-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .department-card p {
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .department-contact {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-light);
+            border: 1px solid rgba(255, 0, 0, 0.08);
+        }
+
+        .faq-question {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .faq-answer {
+            color: var(--muted);
+            line-height: 1.6;
         }
 
         /* Responsive Design */
@@ -272,13 +273,22 @@
         }
 
         @media (max-width: 768px) {
-            .section-title h2 {
-                font-size: 2rem;
+            .page-hero {
+                padding: 6rem 0 3rem;
+                margin-top: 70px;
+            }
+
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .page-hero p {
+                font-size: 1.2rem;
             }
             
             .contact-item {
                 flex-direction: column;
-                text-align: center;
+                
             }
             
             .contact-icon {
@@ -289,150 +299,362 @@
             .contact-form {
                 padding: 1.5rem;
             }
-            
-            .container {
-                padding: 1rem 15px;
-                margin-top: 70px;
-            }
 
-            .site-nav ul {
-                gap: 1rem;
-            }
-
-            .site-nav a {
-                padding: 0.4rem 1rem;
-                font-size: 0.9rem;
+            .departments-grid {
+                grid-template-columns: 1fr;
             }
         }
 
         @media (max-width: 480px) {
-            .contact-form {
-                padding: 1rem;
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .page-hero p {
+                font-size: 1.1rem;
             }
             
-            .btn {
-                width: 100%;
-                min-width: auto;
-            }
-
-            .header-inner {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-
-            .site-nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .container {
-                margin-top: 120px;
+            .contact-form {
+                padding: 1rem;
             }
         }
     </style>
 </head>
 <body>
+   <a href="#main" class="skip-link">Skip to main content</a>
+
     <!-- Header -->
-    <header class="site-header">
-        <div class="header-inner">
+    <header class="site-header" id="site-header">
+        <div class="container header-inner">
             <a class="brand" href="index.html">
                 <img src="images/pcc-logo.png" alt="Pasig Catholic College" height="44">
                 <span>Pasig Catholic College</span>
             </a>
 
-            <nav class="site-nav">
+            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+
+            <nav class="site-nav" id="siteNav" aria-label="Main navigation">
                 <ul>
-                    <li><a href="About.html">About</a></li>
-                    <li><a href="Feature.html">Features</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="features.html">Features</a></li>
                     <li><a href="facilities.html">Facilities</a></li>
-                    <li><a href="index.html" class="back-home">Back to Home</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="admissions.html" class="btn-nav">Apply Now</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact Us</h2>
+    <main id="main">
+        <!-- Contact Hero -->
+        <section class="page-hero">
+            <div class="container">
+                <h1>Contact Us</h1>
+                <p>Get in touch with Pasig Catholic College</p>
             </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">📍</div>
-                            <div>
-                                <strong>Address:</strong><br>
-                                Malinao Campus, <br>
-                                Justice Ramon Jabson St., Malinao, Pasig City
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div>
+                                    <strong>Address:</strong><br>
+                                    Malinao Campus, <br>
+                                    Justice Ramon Jabson St., Malinao, Pasig City
+                                </div>
                             </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">📞</div>
-                            <div>
-                                <strong>Phone:</strong><br>
-                                (02) 8642-7451
+                            <div class="contact-item">
+                                <div>
+                                    <strong>Phone:</strong><br>
+                                    (02) 8642-7451
+                                </div>
                             </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">✉️</div>
-                            <div>
-                                <strong>Email:</strong><br>
-                                info@pasigcatholic.edu.ph
+                            <div class="contact-item">
+                                <div>
+                                    <strong>Email:</strong><br>
+                                    info@pasigcatholic.edu.ph
+                                </div>
                             </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">🌐</div>
-                            <div>
-                                <strong>Website:</strong><br>
-                                www.pasigcatholic.edu.ph
+                            <div class="contact-item">
+                                <div>
+                                    <strong>Website:</strong><br>
+                                    www.pasigcatholic.edu.ph
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <h3>Office Hours</h3>
-                    <p>Monday to Friday: 8:00 AM - 5:00 PM</p>
-                    <p>Saturday: 8:00 AM - 12:00 NN</p>
-                </div>
-                <div class="contact-form">
-                    <h3>Send Us a Message</h3>
-                    <form id="messageForm">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
+                    <div class="contact-form">
+                        <h3>Send Us a Message</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="admissions">Admissions Inquiry</option>
+                                    <option value="academics">Academic Programs</option>
+                                    <option value="facilities">Facilities</option>
+                                    <option value="financial">Financial Aid</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Departments Section -->
+        <section class="departments-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Department Contacts</h2>
+                    <p>Get in touch with specific departments and offices</p>
+                </div>
+                
+                <div class="departments-grid">
+                    <div class="department-card">
+                        <h3>Admissions Office</h3>
+                        <p>For inquiries about enrollment, requirements, and application process.</p>
+                        <div class="department-contact">admissions@pasigcatholic.edu.ph</div>
+                    </div>
+                    
+                    <div class="department-card">
+                        <h3>Registrar's Office</h3>
+                        <p>For student records, transcripts, and academic documents.</p>
+                        <div class="department-contact">registrar@pasigcatholic.edu.ph</div>
+                    </div>
+                    
+                    <div class="department-card">
+                        <h3>Accounting Office</h3>
+                        <p>For tuition fees, payment schemes, and financial matters.</p>
+                        <div class="department-contact">accounting@pasigcatholic.edu.ph</div>
+                    </div>
+                    
+                    <div class="department-card">
+                        <h3>Academic Departments</h3>
+                        <p>For program-specific inquiries and academic concerns.</p>
+                        <div class="department-contact">academics@pasigcatholic.edu.ph</div>
+                    </div>
+                    
+                    <div class="department-card">
+                        <h3>Campus Ministry</h3>
+                        <p>For spiritual activities, retreats, and religious formation.</p>
+                        <div class="department-contact">ministry@pasigcatholic.edu.ph</div>
+                    </div>
+                    
+                    <div class="department-card">
+                        <h3>Student Affairs</h3>
+                        <p>For student organizations, activities, and campus life.</p>
+                        <div class="department-contact">studentaffairs@pasigcatholic.edu.ph</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Visit Our Campus</h2>
+                    <p>Come see our facilities and experience the PCC community</p>
+                </div>
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        Map: Pasig Catholic College - Malinao Campus
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Quick answers to common inquiries</p>
+                </div>
+                
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">What are the admission requirements?</div>
+                        <div class="faq-answer">Admission requirements vary by program level. Generally, you'll need completed application forms, academic records, birth certificate, and other supporting documents. Please contact the Admissions Office for specific requirements.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">Do you offer scholarships?</div>
+                        <div class="faq-answer">Yes, we offer various scholarships including academic, athletic, and financial aid scholarships. Contact our Accounting Office for more information about eligibility and application process.</div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">What are the office hours?</div>
+                        <div class="faq-answer">Our offices are open Monday to Friday from 8:00 AM to 5:00 PM, and Saturdays from 8:00 AM to 12:00 NN. We are closed on Sundays and holidays.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer from index.html -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Pasig Catholic College</h3>
+                    <p>Providing quality Catholic education since 1913. Nurturing minds, shaping character, and building futures.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/pasigcatholiccollegeph" title="Facebook">FB</a>
+                        <a href="https://x.com/i/flow/login?redirect_after_login=%2FPCC1913Official" title="Twitter">X</a>
+                        <a href="https://www.youtube.com/channel/UCuV30fNIIh97soyu73FJuOw" title="YouTube">YT</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="facilities.html">Facilities</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="core.html">Core Values</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Academic Programs</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#programs">Pre-School</a></li>
+                        <li><a href="index.html#programs">Elementary</a></li>
+                        <li><a href="index.html#programs">Junior High School</a></li>
+                        <li><a href="index.html#programs">Senior High School</a></li>
+                        <li><a href="index.html#programs">College</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li>Malinao Campus</li>
+                        <li>Justice Ramon Jabson St., Malinao, Pasig City</li>
+                        <li>(02) 8642-7451</li>
+                        <li>info@pasigcatholic.edu.ph</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Pasig Catholic College. All Rights Reserved. <br>
+                    Crafted with Psychology Students
+                </p>
+            </div>
         </div>
-    </section>
+    </footer>
+
+    <button class="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
 
     <script>
+        // Contact Form Handling
         document.addEventListener('DOMContentLoaded', function() {
-            const messageForm = document.getElementById('messageForm');
+            const contactForm = document.getElementById('contactForm');
             
-            if (messageForm) {
-                messageForm.addEventListener('submit', function(e) {
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    alert('Thank you for your message! We will get back to you soon.');
-                    this.reset();
+                    
+                    // Get form data
+                    const formData = new FormData(contactForm);
+                    const data = Object.fromEntries(formData);
+                    
+                    // Simple validation
+                    let isValid = true;
+                    const requiredFields = contactForm.querySelectorAll('[required]');
+                    
+                    requiredFields.forEach(field => {
+                        if (!field.value.trim()) {
+                            isValid = false;
+                            field.style.borderColor = 'red';
+                        } else {
+                            field.style.borderColor = '#e0e0e0';
+                        }
+                    });
+                    
+                    if (!isValid) {
+                        alert('Please fill in all required fields.');
+                        return;
+                    }
+                    
+                    // Show loading state
+                    const submitBtn = contactForm.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    submitBtn.textContent = 'Sending...';
+                    submitBtn.disabled = true;
+                    
+                    // Simulate form submission
+                    setTimeout(() => {
+                        // In a real application, you would send the data to a server here
+                        console.log('Form submitted:', data);
+                        
+                        // Show success message
+                        alert('Thank you for your message! We will get back to you soon.');
+                        
+                        // Reset form
+                        contactForm.reset();
+                        
+                        // Reset button
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }, 1500);
                 });
             }
+            
+            // Mobile navigation
+            const navToggle = document.getElementById('navToggle');
+            const siteNav = document.getElementById('siteNav');
+            
+            if (navToggle && siteNav) {
+                navToggle.addEventListener('click', function() {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    siteNav.classList.toggle('active');
+                });
+            }
+            
+            // Back to Top Button
+            const backToTopButton = document.querySelector('.back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
